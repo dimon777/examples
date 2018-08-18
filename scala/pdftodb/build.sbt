@@ -13,6 +13,7 @@ libraryDependencies ++= Seq(
   "org.apache.tika" % "tika-parsers" % "1.18",
 //  "com.levigo.jbig2" % "levigo-jbig2-imageio" % "1.6.5",
 //  "net.sourceforge.tess4j" % "tess4j" % "3.4.8",
+  "com.oracle" % "ojdbc8" % "12.2.0",
   "mysql" % "mysql-connector-java" % "5.1.38"
 )
 
