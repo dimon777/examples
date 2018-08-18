@@ -16,6 +16,7 @@ package app
 DROP TABLE pdf_documents;
 CREATE TABLE `pdf_documents` (
   `hash` varchar(64) NOT NULL,
+  `filename` varchar(128) NOT NULL,
   `parse_dt` DATETIME NOT NULL,
   `page_count` INTEGER DEFAULT NULL,
   `title` varchar(256) DEFAULT NULL,
@@ -105,16 +106,17 @@ object PdftodbApp {
 //    var st:PreparedStatement = null
 //    try {
       st.setString(1, r.hash)
-      st.setTimestamp(2, r.now)
-      st.setInt(3, r.pages)
-      st.setString(4, r.title)
-      st.setString(5, r.author)
-      st.setString(6, r.subject)
-      st.setString(7, r.keywords)
-      st.setString(8, r.creator)
-      st.setString(9, r.producer)
-      st.setTimestamp(10, r.created)
-      st.setString(11, r.content)
+      st.setString(2, r.filename)
+      st.setTimestamp(3, r.now)
+      st.setInt(4, r.pages)
+      st.setString(5, r.title)
+      st.setString(6, r.author)
+      st.setString(7, r.subject)
+      st.setString(8, r.keywords)
+      st.setString(9, r.creator)
+      st.setString(10, r.producer)
+      st.setTimestamp(11, r.created)
+      st.setString(12, r.content)
       st.executeUpdate()
   }
 
@@ -169,17 +171,18 @@ object PdftodbApp {
       val subject = metadata.get("subject")
       val title = metadata.get("title")
       val pages = metadata.get("xmpTPg:NPages").toInt
-      val r =  PdfRecord(hash, now, keywords, producer, author, creator, created, subject, title, pages, content)
+      val filename = new File(file).getName()
+      val r =  PdfRecord(hash, filename, now, keywords, producer, author, creator, created, subject, title, pages, content)
 
       // Saving to database
       var st: PreparedStatement = null
       try {
-        st = connection.prepareStatement("INSERT INTO pdf_documents(hash,parse_dt,page_count,title,author,subject,keywords,creator,producer,created_dt,content) VALUES (?,?,?,?,?,?,?,?,?,?,?)")
+        st = connection.prepareStatement("INSERT INTO pdf_documents(hash,filename,parse_dt,page_count,title,author,subject,keywords,creator,producer,created_dt,content) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")
         saveDoc(r, st)
         println(s"INFO: Document: $file saved with hash: $hash")
         // Moving file which was processed
         val oldfile = new File(file).toPath
-        val fname = moveFolder+"/"+new File(file).getName()
+        val fname = moveFolder + "/" + filename
         val savfile = new File(fname).toPath
         Files.move(oldfile, savfile, StandardCopyOption.ATOMIC_MOVE)
       }

@@ -1,10 +1,10 @@
-[0m[[0m[33mwarn[0m] [0m[0m/data/src-examples/pdftodb/src/main/scala/app/PdftodbApp.scala:96:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.[0m
+[0m[[0m[33mwarn[0m] [0m[0m/data/src-examples/scala/pdftodb/src/main/scala/app/PdftodbApp.scala:97:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.[0m
 [0m[[0m[33mwarn[0m] [0m[0m      case e => e.printStackTrace[0m
 [0m[[0m[33mwarn[0m] [0m[0m           ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/data/src-examples/pdftodb/src/main/scala/app/PdftodbApp.scala:132:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.[0m
+[0m[[0m[33mwarn[0m] [0m[0m/data/src-examples/scala/pdftodb/src/main/scala/app/PdftodbApp.scala:134:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.[0m
 [0m[[0m[33mwarn[0m] [0m[0m      case e => e.printStackTrace[0m
 [0m[[0m[33mwarn[0m] [0m[0m           ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/data/src-examples/pdftodb/src/main/scala/app/PdftodbApp.scala:187:14: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.[0m
+[0m[[0m[33mwarn[0m] [0m[0m/data/src-examples/scala/pdftodb/src/main/scala/app/PdftodbApp.scala:190:14: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.[0m
 [0m[[0m[33mwarn[0m] [0m[0m        case e => e.printStackTrace[0m
 [0m[[0m[33mwarn[0m] [0m[0m             ^[0m
 [0m[[0m[33mwarn[0m] [0m[0mthree warnings found[0m
