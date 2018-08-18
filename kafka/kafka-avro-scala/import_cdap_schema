@@ -1,0 +1,17 @@
+if [ $# -ne 1 ]
+then
+  echo "Usage $0 [TOPIC|SCHEMA]"
+  echo "Example: $0 t-trans-01"
+  exit 0
+fi
+
+TOPIC=$1
+
+ID=$1
+ID_DESC=$ID
+SCHEMA_FILE="./src/main/resources/transaction_schema.avsc"
+curl -X PUT "http://localhost:11015/v3/namespaces/default/apps/dataprep/services/service/methods/schemas?id=$ID&name=$ID&description=$ID_DESC&type=avro" | python -mjson.tool
+#cd /data/src/kafka-avro-scala/src/main/resources
+curl -X POST --data-binary @$SCHEMA_FILE "http://localhost:11015/v3/namespaces/default/apps/dataprep/services/service/methods/schemas/$ID" | python -mjson.tool
+echo "You now can read avro encoded Kafka messages in CDAP"
+echo "In CDAP UI: parse-as-avro body $ID binary"

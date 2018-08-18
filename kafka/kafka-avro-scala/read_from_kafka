@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+  echo "Usage $0 [TOPIC]"
+  exit 0
+fi
+
+TOPIC=$1
+DATA=`pwd`/data/eq_trades.csv
+#KAFKA_HOME=/opt/kafka_2.11-2.0.0/
+KAFKA_HOME=/opt/kafka_2.11-0.10.2.0
+pushd .
+cd $KAFKA_HOME
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $TOPIC --from-beginning
+popd

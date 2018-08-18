@@ -1,0 +1,15 @@
+{
+    "namespace": "kakfa-avro.transaction",
+     "type": "record",
+     "name": "transaction",
+     "fields":[
+         { "name": "tranId", "type": "string" },
+         { "name": "tranTs", "type": "string",  },
+         { "name": "clientId",  "type": "string" },
+         { "name": "pdType",  "type": "string" },
+         { "name": "symbol",  "type": "string" },
+         { "name": "unitNum",  "type": "int" },
+         { "name": "unitPrice",  "type": "double" }
+     ]
+}
+/*"logicalType" : "timestamp-micros"*/

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+  echo "Usage $0 [TOPIC]"
+  exit 0
+fi
+
+TOPIC=$1
+DATA=`pwd`/data/eq_trades.csv
+#KAFKA_HOME=/opt/kafka_2.11-2.0.0/
+KAFKA_HOME=/opt/kafka_2.11-0.10.2.0
+pushd .
+cd $KAFKA_HOME
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic $TOPIC
+./bin/kafka-console-producer.sh --broker-list localhost:9092 --topic $TOPIC < $DATA
+popd

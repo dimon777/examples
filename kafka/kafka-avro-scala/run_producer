@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+  echo "Usage $0 [TOPIC] [FILE]"
+  echo "Example: $0 t-trans-01 ./data/eq_trades.csv"
+  exit 0
+fi
+
+function toKafka() {
+  IFS=', ' read -r -a array <<< "$1"
+  echo "Stream trade: ${array[0]} ${array[1]} ${array[2]} ${array[3]} ${array[4]}"
+  sbt "run-main demoApp.ProducerApp $TOPIC ${array[0]} ${array[1]} ${array[2]} ${array[3]} ${array[4]}" 2>/dev/null | grep success
+}
+
+TOPIC=$1
+FILE=$2
+
+
+while IFS='' read -r line || [[ -n "$line" ]]; do
+#    echo "Text read from file: $line"
+    toKafka "$line"
+done < "$FILE"

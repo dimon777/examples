@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+  echo "Usage $0 [KAFKA_HOME] [TOPIC]"
+  echo "Example: $0 /opt/kafka_2.11-0.10.2.0 t-trans-01"
+  exit 0
+fi
+
+KAFKA_HOME=$1
+TOPIC=$2
+#KAFKA_HOME=/opt/kafka_2.11-2.0.0/
+pushd .
+cd $KAFKA_HOME
+
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic $TOPIC
+popd

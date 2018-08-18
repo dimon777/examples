@@ -1,0 +1,9 @@
+if [ $# -ne 1 ]
+then
+  echo "Usage $0 [TOPIC]"
+  echo "Example: $0 t-trans-01"
+  exit 0
+fi
+
+TOPIC=$1
+sbt "run-main demoApp.ConsumerApp $TOPIC"
