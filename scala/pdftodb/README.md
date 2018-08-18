@@ -49,7 +49,8 @@ sbt "run /data/datasource/pdf com.mysql.jdbc.Driver jdbc:mysql://localhost:3306/
 
 ## Oracle:
 mvn install:install-file -Dfile=C:\\app\\oracle\\product\\12.2.0\\dbhome_1\\jdbc\\lib\\ojdbc8.jar \
--DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=12.2.0 -Dpackaging=jar
+-DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=12.2.0 -Dpackaging=jar #-DgeneratePom=true
+
 
 sbt "run /data/datasource/pdf oracle.jdbc.OracleDriver jdbc:oracle:thin:@localhost:1521:pdf pdf pdf"
 #jdbcurl = jdbc:oracle:<drivertype>:@<hostname>:<port>:<database>

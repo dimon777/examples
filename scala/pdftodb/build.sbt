@@ -6,6 +6,8 @@ version := "1.0"
 
 scalaVersion := "2.11.6"
 
+resolvers += Resolver.mavenLocal
+
 libraryDependencies ++= Seq(
 //  "org.apache.pdfbox" % "pdfbox" % "1.8.15",
   "org.apache.tika" % "tika-parsers" % "1.18",
