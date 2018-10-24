@@ -1,6 +1,7 @@
 # sensorlist
 
-A new flutter plugin project.
+A flutter plugin project showing native platform to Flutter communication. 
+It returns list of available sensors from from native code to Flutter.
 
 ## Getting Started
 
